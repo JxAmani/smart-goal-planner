@@ -1,34 +1,49 @@
 // src/components/GoalCard.jsx
 
-function GoalCard({ goal }) {
+function GoalCard({ goal, setGoals }) {
   const percent = Math.min((goal.savedAmount / goal.targetAmount) * 100, 100)
 
+  const handleDeposit = async () => {
+    const input = prompt("Enter deposit amount:")
+    const amount = parseFloat(input)
+
+    if (!amount || amount <= 0) return
+
+    const updatedGoal = {
+      ...goal,
+      savedAmount: goal.savedAmount + amount,
+    }
+
+    await fetch(`http://localhost:3000/goals/${goal.id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ savedAmount: updatedGoal.savedAmount }),
+    })
+
+    setGoals((prev) =>
+      prev.map((g) => (g.id === goal.id ? updatedGoal : g))
+    )
+  }
+
   return (
-    <div
-      style={{
-        border: '1px solid #ccc',
-        padding: '12px',
-        marginBottom: '12px',
-        borderRadius: '8px',
-        backgroundColor: '#f9f9f9'
-      }}
-    >
+    <div className="card">
       <h3>{goal.name}</h3>
       <p>Category: {goal.category}</p>
       <p>Saved ${goal.savedAmount} / ${goal.targetAmount}</p>
 
-      <div style={{ background: '#eee', height: '10px', borderRadius: '4px' }}>
+      <div className="progress-container">
         <div
+          className="progress-bar"
           style={{
-            height: '10px',
             width: `${percent}%`,
-            background: percent === 100 ? 'green' : 'blue',
-            borderRadius: '4px',
+            backgroundColor: percent === 100 ? 'green' : 'blue',
           }}
         ></div>
       </div>
 
-      <button style={{ marginTop: '10px' }}>Deposit</button>
+      <button className="btn" onClick={handleDeposit}>
+        Deposit
+      </button>
     </div>
   )
 }
