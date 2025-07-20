@@ -1,30 +1,23 @@
+// src/components/GoalList.jsx
 
-
-function GoalCard({ goal }) {
-  const percent = Math.min((goal.savedAmount / goal.targetAmount) * 100, 100)
+function GoalList({ goals }) {
+  if (goals.length === 0) {
+    return <p>No goals loaded yet.</p>
+  }
 
   return (
-    <div className="card">
-      <h3>{goal.name}</h3>
-      <p>Category: {goal.category}</p>
-      <p>
-        Saved ${goal.savedAmount} / ${goal.targetAmount}
-      </p>
-
-      <div className="progress-container">
-        <div
-          className="progress-bar"
-          style={{
-            width: `${percent}%`,
-            backgroundColor: percent === 100 ? 'green' : 'blue',
-          }}
-        ></div>
-      </div>
-
-      <button className="btn" style={{ marginTop: '10px' }}>Deposit</button>
+    <div>
+      <h2>Goals</h2>
+      <ul>
+        {goals.map((goal) => (
+          <li key={goal.id}>
+            {goal.name} - ${goal.savedAmount} / ${goal.targetAmount}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
 
-export default GoalCard
+export default GoalList
 
