@@ -19,9 +19,9 @@ Live Demo: [https://jxamani.github.io/smart-goal-planner/](https://jxamani.githu
 ## Technologies Used
 
 - React (Vite)
-- JSON Server 
-- JavaScript 
-- CSS (vanilla CSS)
+- JSON Server (mock API)
+- JavaScript (ES6+)
+- CSS (no frameworks, no icons)
 
 ---
 
