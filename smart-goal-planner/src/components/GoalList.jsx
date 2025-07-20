@@ -1,5 +1,7 @@
 // src/components/GoalList.jsx
 
+import GoalCard from './GoalCard'
+
 function GoalList({ goals }) {
   if (goals.length === 0) {
     return <p>No goals loaded yet.</p>
@@ -8,16 +10,13 @@ function GoalList({ goals }) {
   return (
     <div>
       <h2>Goals</h2>
-      <ul>
-        {goals.map((goal) => (
-          <li key={goal.id}>
-            {goal.name} - ${goal.savedAmount} / ${goal.targetAmount}
-          </li>
-        ))}
-      </ul>
+      {goals.map((goal) => (
+        <GoalCard key={goal.id} goal={goal} />
+      ))}
     </div>
   )
 }
 
 export default GoalList
+
 
