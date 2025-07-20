@@ -1,6 +1,5 @@
 .card {
   background: white;
-
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 29px;
@@ -30,17 +29,42 @@
   height: 10px;
   width: 100%;
   border-radius: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .progress-bar {
   height: 10px;
   border-radius: 4px;
 }
-input{
-    padding: 16px;
-    border-radius: 12px;
-    margin-left: 12px;
+
+.progress-bar-fill {
+  height: 10px;
+  border-radius: 4px;
 }
-body{
-    background-image: url(https://images.pexels.com/photos/8693381/pexels-photo-8693381.jpeg);
+
+.deposit-button {
+  margin-top: 40px;
+  padding: 10px 16px;
+  border: none;
+  background-color: orangered;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: medium;
+}
+
+.deposit-button:hover {
+  background-color: blue;
+  text-decoration: underline;
+}
+
+input {
+  padding: 16px;
+  border-radius: 12px;
+  margin-left: 12px;
+}
+
+body {
+  background-image: url(https://images.pexels.com/photos/8693381/pexels-photo-8693381.jpeg);
 }
