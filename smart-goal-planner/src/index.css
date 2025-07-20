@@ -1,23 +1,29 @@
 .card {
   background: white;
+
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 16px;
+  padding: 29px;
   margin-bottom: 16px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .btn {
-  background: cornflowerblue;
+  background: orangered;
   color: white;
   border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
+  padding: 24px;
+  border-radius: 16px;
   cursor: pointer;
+  font-size: large;
+  font-style: oblique;
+  margin-left: 12px;
 }
 
 .btn:hover {
-  background: cornflowerblue;
+  background: blue;
+  cursor: pointer;
+  text-decoration: underline;
 }
 .progress-container {
   background-color: #eee;
@@ -30,5 +36,11 @@
   height: 10px;
   border-radius: 4px;
 }
-
-
+input{
+    padding: 16px;
+    border-radius: 12px;
+    margin-left: 12px;
+}
+body{
+    background-image: url(https://images.pexels.com/photos/8693381/pexels-photo-8693381.jpeg);
+}
