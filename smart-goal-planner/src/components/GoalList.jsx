@@ -1,8 +1,6 @@
-// src/components/GoalList.jsx
+import GoalCard from "./GoalCard"
 
-import GoalCard from './GoalCard'
-
-function GoalList({ goals }) {
+function GoalList({ goals, setGoals }) {
   if (goals.length === 0) {
     return <p>No goals loaded yet.</p>
   }
@@ -11,12 +9,10 @@ function GoalList({ goals }) {
     <div>
       <h2>Goals</h2>
       {goals.map((goal) => (
-        <GoalCard key={goal.id} goal={goal} />
+        <GoalCard key={goal.id} goal={goal} setGoals={setGoals} />
       ))}
     </div>
   )
 }
 
 export default GoalList
-
-
