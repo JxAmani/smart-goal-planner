@@ -1,17 +1,17 @@
 function GoalCard({ goal, setGoals }) {
-  const percent = Math.min((goal.savedAmount / goal.targetAmount) * 100, 100)
+  const percent = Math.min((goal.savedAmount / goal.targetAmount) * 100, 100);
 
   function handleDeposit() {
-    const amount = parseFloat(prompt("Enter deposit amount:"))
+    const amount = parseFloat(prompt("Enter deposit amount:"));
 
     if (isNaN(amount) || amount <= 0) {
-      alert("Please enter a valid number.")
-      return
+      alert("Please enter a valid number.");
+      return;
     }
 
-    const updatedAmount = goal.savedAmount + amount
+    const updatedAmount = goal.savedAmount + amount;
 
-    fetch(`https://smart-goal-backend.onrender.com/goals/${goal.id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/goals/${goal.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -22,12 +22,12 @@ function GoalCard({ goal, setGoals }) {
       .then((updatedGoal) => {
         setGoals((prevGoals) =>
           prevGoals.map((g) => (g.id === updatedGoal.id ? updatedGoal : g))
-        )
+        );
       })
       .catch((err) => {
-        console.error("Failed to deposit:", err)
-        alert("Failed to update goal. Please try again later.")
-      })
+        console.error("Failed to deposit:", err);
+        alert("Failed to update goal. Please try again later.");
+      });
   }
 
   return (
@@ -50,7 +50,7 @@ function GoalCard({ goal, setGoals }) {
         Deposit
       </button>
     </div>
-  )
+  );
 }
 
-export default GoalCard
+export default GoalCard;

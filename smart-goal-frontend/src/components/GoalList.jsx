@@ -1,18 +1,44 @@
-import GoalCard from "./GoalCard"
+import React, { useEffect, useState } from 'react';
 
-function GoalList({ goals, setGoals }) {
-  if (goals.length === 0) {
-    return <p>No goals loaded yet.</p>
-  }
+function GoalList() {
+  const [goals, setGoals] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/goals`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Network response was not ok");
+        return res.json();
+      })
+      .then((data) => {
+        setGoals(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch goals:", err);
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <p>Loading goals...</p>;
+  if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
 
   return (
     <div>
-      <h2>Goals</h2>
-      {goals.map((goal) => (
-        <GoalCard key={goal.id} goal={goal} setGoals={setGoals} />
-      ))}
+      <h2>My Goals</h2>
+      {goals.length === 0 ? (
+        <p>No goals found.</p>
+      ) : (
+        <ul>
+          {goals.map(goal => (
+            <li key={goal.id}>{goal.title}</li>
+          ))}
+        </ul>
+      )}
     </div>
-  )
+  );
 }
 
-export default GoalList
+export default GoalList;

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
 function AddGoalForm({ setGoals }) {
   const [formData, setFormData] = useState({
@@ -6,40 +6,40 @@ function AddGoalForm({ setGoals }) {
     targetAmount: '',
     category: '',
     deadline: ''
-  })
+  });
 
   function handleChange(e) {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
       [name]: value
-    }))
+    }));
   }
 
   function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
 
     const newGoal = {
       ...formData,
       targetAmount: Number(formData.targetAmount),
       savedAmount: 0,
       createdAt: new Date().toISOString().split('T')[0]
-    }
+    };
 
-    fetch('https://smart-goal-backend.onrender.com/goals', {
+    fetch(`${import.meta.env.VITE_API_URL}/goals`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newGoal)
     })
       .then((res) => res.json())
       .then((createdGoal) => {
-        setGoals((goals) => [...goals, createdGoal])
-        setFormData({ name: '', targetAmount: '', category: '', deadline: '' }) // Reset form
+        setGoals((goals) => [...goals, createdGoal]);
+        setFormData({ name: '', targetAmount: '', category: '', deadline: '' }); // Reset form
       })
       .catch((error) => {
-        console.error("Error creating goal:", error)
-        alert("Failed to add goal. Please try again.")
-      })
+        console.error("Error creating goal:", error);
+        alert("Failed to add goal. Please try again.");
+      });
   }
 
   return (
@@ -78,7 +78,8 @@ function AddGoalForm({ setGoals }) {
       />
       <button className="btn" type="submit">Add Goal</button>
     </form>
-  )
+  );
 }
 
-export default AddGoalForm
+export default AddGoalForm;
+
