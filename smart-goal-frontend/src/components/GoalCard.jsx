@@ -11,7 +11,7 @@ function GoalCard({ goal, setGoals }) {
 
     const updatedAmount = goal.savedAmount + amount
 
-    fetch(`http://localhost:3000/goals/${goal.id}`, {
+    fetch(`https://smart-goal-backend.onrender.com/goals/${goal.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -23,6 +23,10 @@ function GoalCard({ goal, setGoals }) {
         setGoals((prevGoals) =>
           prevGoals.map((g) => (g.id === updatedGoal.id ? updatedGoal : g))
         )
+      })
+      .catch((err) => {
+        console.error("Failed to deposit:", err)
+        alert("Failed to update goal. Please try again later.")
       })
   }
 

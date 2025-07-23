@@ -26,7 +26,7 @@ function AddGoalForm({ setGoals }) {
       createdAt: new Date().toISOString().split('T')[0]
     }
 
-    fetch('http://localhost:3000/goals', {
+    fetch('https://smart-goal-backend.onrender.com/goals', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newGoal)
@@ -35,6 +35,10 @@ function AddGoalForm({ setGoals }) {
       .then((createdGoal) => {
         setGoals((goals) => [...goals, createdGoal])
         setFormData({ name: '', targetAmount: '', category: '', deadline: '' }) // Reset form
+      })
+      .catch((error) => {
+        console.error("Error creating goal:", error)
+        alert("Failed to add goal. Please try again.")
       })
   }
 

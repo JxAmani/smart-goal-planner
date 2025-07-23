@@ -7,7 +7,7 @@ function App() {
   const [goals, setGoals] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:3000/goals')
+    fetch('https://smart-goal-backend.onrender.com/goals') 
       .then((res) => res.json())
       .then((data) => {
         console.log('Fetched goals:', data)
@@ -27,3 +27,4 @@ function App() {
 }
 
 export default App
+
