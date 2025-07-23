@@ -18,12 +18,12 @@ A React + JSON Server application to help users set and manage savings goals eff
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - React (Vite)
 - JSON Server
-- JavaScript (ES6+)
-- CSS
+- JavaScript
+- CSS (Vanilla CSS)
 
 
 
@@ -35,4 +35,4 @@ A React + JSON Server application to help users set and manage savings goals eff
 
 ```bash
 git clone https://github.com/jxamani/smart-goal-planner.git
-cd smart-goal-planner
+
