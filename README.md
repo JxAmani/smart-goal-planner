@@ -4,7 +4,7 @@ A React + JSON Server application to help users set and manage savings goals eff
 
 ## Live Site
 
-[https://jxamani.github.io/smart-goal-planner/](https://jxamani.github.io/smart-goal-planner/)
+[https://jxamani.github.io/smart-goal-planner/](https://smart-goal-planner-qe4a.vercel.app/)
 
 ---
 
